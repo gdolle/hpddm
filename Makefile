@@ -157,7 +157,7 @@ python: ${TOP_DIR}/${LIB_DIR}/libhpddm_python.${EXTENSION_LIB}
 ifneq (,$(findstring gfortran,${OMPI_FC}${MPICH_F90}))
     F90MOD = -J
 else
-    F90MOD = -module
+    F90MOD = -mhle #-module
 endif
 fortran: ${TOP_DIR}/${LIB_DIR}/libhpddm_fortran.${EXTENSION_LIB} ${TOP_DIR}/${BIN_DIR}/custom_operator
 
