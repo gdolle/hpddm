@@ -23,7 +23,6 @@ If you need to generate the documentation, you first have to retrieve [NaturalDo
 Create a `./Makefile.inc` by copying one from the folder `./Make.inc` and adapt it to your platform. Type `make test` to run C++, C, Python, and Fortran examples (just type `make test_language` with `language = [cpp|c|python|fortran]` if you want to try only one set of examples).
 
 ###### CMake toolchain
-
 The library can be build using the crossplatform build tool [cmake](https://cmake.org/).
 
 ```sh
@@ -36,16 +35,17 @@ make
 make test
 make install
 ```
-Some meta target are available.
+Some meta target are available (`cpp`,`c`,`python`,`fortran`,`testsuite`,`benchmarks`),
+for example
 
 ```
-make cpp
-make c
-make fortran
-make python
+make testsuite # compile testsuite only.
+make test      # run tests (ctest)
 
-make testsuite # use ctest
-make benchmarks
+For debugging purpose, proceed as follows
+```
+cmake -DCMAKE_BUILD_TYPE=Debug ..
+make VERBOSE=1
 ```
 #### May HPDDM be embedded inside C, Python, or Fortran codes?
 Yes, as long as you have a modern C++ compiler (cf. the previous paragraph). With Python, [NumPy](http://www.numpy.org/) and [mpi4py](https://bitbucket.org/mpi4py/) must also be available.
