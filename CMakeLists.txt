@@ -119,7 +119,6 @@ endif()
 set(Fortran_MODULE_DIRECTORY "./interface/")
 
 include(cmake/hpddm.macros.cmake)
-include(cmake/hpddm.tests.cmake)
 include(cmake/hpddm.install.cmake)
 
 add_subdirectory(benchmark)
