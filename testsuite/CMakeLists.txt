@@ -1,4 +1,5 @@
 set(SH_TESTS
+    header.sh
     schwarz_cpp_custom_op.sh
     schwarzFromFile.sh   
     )

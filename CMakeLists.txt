@@ -118,6 +118,8 @@ if(OPENMP_FOUND)
 endif()
 set(Fortran_MODULE_DIRECTORY "./interface/")
 
+set(THREADS_PREFER_PTHREAD_FLAG ON)
+
 include(cmake/hpddm.macros.cmake)
 include(cmake/hpddm.install.cmake)
 
