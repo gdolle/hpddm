@@ -1,3 +1,7 @@
+file(COPY ${CMAKE_SOURCE_DIR}/examples/data/
+    DESTINATION ${CMAKE_BINARY_DIR}/examples/data
+    )
+
 # C++ example.
 hpddm_custom_target(
     TARGETS schwarz_cpp 
@@ -8,6 +12,12 @@ hpddm_custom_target(
 hpddm_custom_target(
     TARGETS driver
     SOURCES driver.cpp
+    DESTINATION ./bin
+    META cpp)
+
+hpddm_custom_target(
+    TARGETS schwarzFromFile_cpp
+    SOURCES schwarz.cpp generateFromFile.cpp  
     DESTINATION ./bin
     META cpp)
 
@@ -28,4 +38,3 @@ hpddm_custom_target(
     DESTINATION ./bin
     LINKS hpddm_fortran
     META fortran)
-

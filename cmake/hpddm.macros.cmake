@@ -71,8 +71,8 @@ macro(hpddm_add_test)
     list(APPEND HPDDM_META_TARGETS "testsuite")
     list(REMOVE_DUPLICATES HPDDM_META_TARGETS)
     # Set scope.
-    #set( HPDDM_META_testsuite ${HPDDM_META_testsuite} PARENT_SCOPE)
-    #set( HPDDM_META_TARGETS ${HPDDM_META_TARGETS} PARENT_SCOPE)
+    set( HPDDM_META_testsuite ${HPDDM_META_testsuite} PARENT_SCOPE)
+    set( HPDDM_META_TARGETS ${HPDDM_META_TARGETS} PARENT_SCOPE)
 endmacro()
 
 # Generate additionnal meta targets.

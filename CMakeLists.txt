@@ -34,6 +34,7 @@ enable_language (Fortran)
 enable_testing()
 
 find_package(MPI REQUIRED)
+find_package(OpenMP)
 find_package(BLAS REQUIRED)
 find_package(LAPACK REQUIRED)
 find_package(SCALAPACK REQUIRED)
@@ -64,6 +65,7 @@ include_directories( ${MPI_Fortran_INCLUDE_PATH} )
 # HPDDM depend libraries.
 set(HPDDM_DEPEND_LIBRARIES "" CACHE STRING "" )
 list( APPEND HPDDM_DEPEND_LIBRARIES ${MPI_LIBRARIES} )
+list( APPEND HPDDM_DEPEND_LIBRARIES ${OPENMP_LIBRARIES} )
 list( APPEND HPDDM_DEPEND_LIBRARIES ${BLAS_LIBRARIES} )
 list( APPEND HPDDM_DEPEND_LIBRARIES ${LAPACK_LIBRARIES} )
 list( APPEND HPDDM_DEPEND_LIBRARIES ${SCALAPACK_LIBRARIES} )
@@ -94,13 +96,22 @@ set(HPDDM_FLAGS "${HPDDM_FLAGS} -DMU_${HPDDM_EIGENSOLVER}")
 # C++ specific.
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -fPIC")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${HPDDM_FLAGS}")
+if(OPENMP_FOUND)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${OPENMP_FLAGS}")
+endif()
 
 # C specific.
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c99")
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${HPDDM_FLAGS}")
+if(OPENMP_FOUND)
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${OPENMP_FLAGS}")
+endif()
 
 # Fortran specific.
 set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} ${HPDDM_FLAGS}")
+if(OPENMP_FOUND)
+    set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} ${OPENMP_FLAGS}")
+endif()
 set(Fortran_MODULE_DIRECTORY "./interface/")
 
 include(cmake/hpddm.macros.cmake)
@@ -110,5 +121,6 @@ include(cmake/hpddm.install.cmake)
 add_subdirectory(benchmark)
 add_subdirectory(examples)
 add_subdirectory(interface)
+add_subdirectory(testsuite)
 
 hpddm_generate_meta()
