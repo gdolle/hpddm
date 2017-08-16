@@ -29,7 +29,7 @@ The library can be build using the crossplatform build tool [cmake](https://cmak
 git clone https://github.com/hpddm/hpddm.git
 cd hpddm
 mkdir build
-cmake -DCMAKE_BUILD_TYPE=Release ..
+cmake ..
 
 make
 make test
@@ -47,6 +47,8 @@ For debugging purpose, proceed as follows
 cmake -DCMAKE_BUILD_TYPE=Debug ..
 make VERBOSE=1
 ```
+Note: use  `-DCMAKE_BUILD_TYPE=Release` for all optimization (slower compilation).
+
 #### May HPDDM be embedded inside C, Python, or Fortran codes?
 Yes, as long as you have a modern C++ compiler (cf. the previous paragraph). With Python, [NumPy](http://www.numpy.org/) and [mpi4py](https://bitbucket.org/mpi4py/) must also be available.
 
