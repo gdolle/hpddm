@@ -16,6 +16,8 @@ if [ ! -d "${ROOTDIR}/.git" ]; then
     WORKDIR=${ROOTDIR}
 fi
 
+
+
 EXDIR=${WORKDIR}/examples
 DATDIR=${WORKDIR}/examples/data
 
