@@ -2,7 +2,7 @@
 
 CURDIR="$( cd "$( dirname "$0" )" && pwd )"
 # header set global variables.
-source ${CURDIR}/header.hpp
+source ${CURDIR}/header.sh
 
 
 
